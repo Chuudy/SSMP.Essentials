@@ -23,6 +23,10 @@
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/BobbyTheCatfish/SSMP.Utils</RepositoryUrl>
   </PropertyGroup>
+  <PropertyGroup>
+    <!-- Override with -p:SSMPDllPath=... to point at your own SSMP install -->
+    <SSMPDllPath Condition="'$(SSMPDllPath)' == ''">H:\SteamLibrary\steamapps\common\Hollow Knight Silksong\BepInEx\plugins\SSMP\SSMP.dll</SSMPDllPath>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="BepInEx.Analyzers" Version="1.0.8" PrivateAssets="all" />
     <PackageReference Include="BepInEx.Core" Version="5.4.21" />
@@ -37,7 +41,7 @@
 	    <Private>False</Private>
 	</Reference>
 	<Reference Include="SSMP">
-	  <HintPath>H:\SteamLibrary\steamapps\common\Hollow Knight Silksong\BepInEx\plugins\SSMP\SSMP.dll</HintPath>
+	  <HintPath>$(SSMPDllPath)</HintPath>
 	</Reference>
   </ItemGroup>
 

@@ -25,6 +25,12 @@ namespace SSMPEssentials.Utils
         static ConfigEntry<KeyCode>? _freecamToggle;
         public static KeyCode FreecamToggle => _freecamToggle?.Value ?? KeyCode.None;
 
+        static ConfigEntry<KeyCode>? _quickTeleportKey;
+        public static KeyCode QuickTeleportKey => _quickTeleportKey?.Value ?? KeyCode.None;
+
+        static ConfigEntry<KeyCode>? _quickTeleportButton;
+        public static KeyCode QuickTeleportButton => _quickTeleportButton?.Value ?? KeyCode.None;
+
         static ConfigEntry<Color>? _defaultColor;
 
         public static Color DefaultColor => _defaultColor?.Value ?? Color.white;
@@ -38,6 +44,10 @@ namespace SSMPEssentials.Utils
             _spectateNext = config.Bind("Keybinds", "Spectate Next Player", KeyCode.Alpha3);
             _exitSpectate = config.Bind("Keybinds", "Exit Spectate Mode", KeyCode.Alpha4);
             _freecamToggle = config.Bind("Keybinds", "Toggle Freecam Mode", KeyCode.Alpha5);
+            _quickTeleportKey = config.Bind("Keybinds", "Quick Teleport", KeyCode.Alpha6,
+                "Teleports to the other player if exactly one is connected, otherwise lists players in chat.");
+            _quickTeleportButton = config.Bind("Keybinds", "Quick Teleport (Controller)", KeyCode.None,
+                "Controller button for Quick Teleport, e.g. JoystickButton6 for Back/View on an Xbox pad.");
             _defaultColor = config.Bind("Username Colors", "Default Color", Color.white);
         }
     }

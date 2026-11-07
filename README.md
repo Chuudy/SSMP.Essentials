@@ -13,6 +13,14 @@ Ever wanted to teleport to your friend quickly, or gather everyone in one spot? 
 - `/huddle` Teleports everyone to you. Must be authorized to use.
 - `/huddle <username>` Teleports everyone to a specific player. Must be authorized to use.
 
+### Quick Teleport
+
+Press the Quick Teleport key (`6` by default) to teleport without typing.
+If exactly one other player is connected, a teleport request is sent to them (same as `/tp`).
+Otherwise, the connected players are listed in chat.
+
+A separate controller binding (`Quick Teleport (Controller)`) is available in the config, e.g. `JoystickButton6` for Back/View on an Xbox controller.
+
 
 ## Spectating/Freecam
 View the world of Pharloom from the perspective of other players! You can view anyone's perspective as long as you're in the room with them.

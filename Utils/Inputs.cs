@@ -45,6 +45,10 @@ namespace SSMPEssentials.Utils
                 if (Spectate.freecam) Spectate.ReturnToSelf();
                 else Spectate.Freecam();
             }
+            else if (Input.GetKeyDown(Config.QuickTeleportKey) || Input.GetKeyDown(Config.QuickTeleportButton))
+            {
+                QuickTeleport.Trigger();
+            }
 
             if (Spectate.freecam)
             {
