@@ -36,7 +36,13 @@ namespace SSMPEssentials.Utils
         }
         public static void Update()
         {
-            if (Client.Client.api?.UiManager.ChatBox.IsOpen ?? false) return;
+            var chatOpen = Client.Client.api?.UiManager.ChatBox.IsOpen ?? false;
+
+            // Hold-to-activate; typing in chat or releasing the key resets the timer.
+            QuickTeleport.UpdateHold(!chatOpen &&
+                (Input.GetKey(Config.QuickTeleportKey) || Input.GetKey(Config.QuickTeleportButton)));
+
+            if (chatOpen) return;
             if (Input.GetKeyDown(Config.SpectateNext)) Spectate.FocusOnPlayer(Spectate.MoveDir.Next);
             else if (Input.GetKeyDown(Config.SpectatePrevious)) Spectate.FocusOnPlayer(Spectate.MoveDir.Prev);
             else if (Input.GetKeyDown(Config.ExitSpectate)) Spectate.ReturnToSelf();
@@ -44,10 +50,6 @@ namespace SSMPEssentials.Utils
             {
                 if (Spectate.freecam) Spectate.ReturnToSelf();
                 else Spectate.Freecam();
-            }
-            else if (Input.GetKeyDown(Config.QuickTeleportKey) || Input.GetKeyDown(Config.QuickTeleportButton))
-            {
-                QuickTeleport.Trigger();
             }
 
             if (Spectate.freecam)

@@ -15,11 +15,12 @@ Ever wanted to teleport to your friend quickly, or gather everyone in one spot? 
 
 ### Quick Teleport
 
-Press the Quick Teleport key (`6` by default) to teleport without typing.
+Hold the Quick Teleport key (`6` by default) for 3 seconds to teleport without typing.
+The hold time can be changed with `Quick Teleport Hold Seconds` in the config (`0` = instant).
 If exactly one other player is connected, a teleport request is sent to them (same as `/tp`).
 Otherwise, the connected players are listed in chat.
 
-A separate controller binding (`Quick Teleport (Controller)`) is available in the config, e.g. `JoystickButton6` for Back/View on an Xbox controller.
+On a controller, hold View/Back (`JoystickButton6` on an Xbox pad) for the same time. This can be changed, or turned off with `None`, via `Quick Teleport (Controller)` in the config.
 
 
 ## Spectating/Freecam

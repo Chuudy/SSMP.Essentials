@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using UnityEngine;
 using SSMPEssentials.Utils;
 
 namespace SSMPEssentials.Client.Modules
@@ -10,6 +11,33 @@ namespace SSMPEssentials.Client.Modules
     /// </summary>
     internal static class QuickTeleport
     {
+        static float _heldFor;
+        static bool _firedThisHold;
+
+        /// <summary>
+        /// Call every frame. Fires <see cref="Trigger"/> once the key has been held for
+        /// <see cref="Config.QuickTeleportHoldSeconds"/>; releasing the key re-arms it.
+        /// </summary>
+        public static void UpdateHold(bool held)
+        {
+            if (!held)
+            {
+                _heldFor = 0f;
+                _firedThisHold = false;
+                return;
+            }
+
+            if (_firedThisHold) return;
+
+            // Unscaled so slow-motion/pause effects don't change the hold time.
+            _heldFor += Time.unscaledDeltaTime;
+            if (_heldFor >= Config.QuickTeleportHoldSeconds)
+            {
+                _firedThisHold = true;
+                Trigger();
+            }
+        }
+
         public static void Trigger()
         {
             var api = Client.api;
