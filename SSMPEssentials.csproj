@@ -23,10 +23,6 @@
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/BobbyTheCatfish/SSMP.Utils</RepositoryUrl>
   </PropertyGroup>
-  <PropertyGroup>
-    <!-- Override with -p:SSMPDllPath=... to point at your own SSMP install -->
-    <SSMPDllPath Condition="'$(SSMPDllPath)' == ''">H:\SteamLibrary\steamapps\common\Hollow Knight Silksong\BepInEx\plugins\SSMP\SSMP.dll</SSMPDllPath>
-  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="BepInEx.Analyzers" Version="1.0.8" PrivateAssets="all" />
     <PackageReference Include="BepInEx.Core" Version="5.4.21" />
@@ -36,12 +32,11 @@
     <PackageReference Include="Microsoft.Unity.Analyzers" Version="1.25.0" PrivateAssets="all" />
     <PackageReference Include="UnityEngine.Modules" Version="6000.0.50" IncludeAssets="compile" />
     <PackageReference Include="Silksong.GameLibs" Version="*-*" PrivateAssets="all" />
-	<Reference Include="FilteredLogs" Condition="'$(Configuration)' == 'Debug'">
+    <!-- SSMP is installed separately as its own plugin (Thunderstore dependency), so compile against it only. -->
+    <PackageReference Include="Silksong.SSMP" Version="0.3.1" PrivateAssets="all" ExcludeAssets="runtime" />
+	<Reference Include="FilteredLogs" Condition="'$(Configuration)' == 'Debug' And Exists('H:\SteamLibrary\steamapps\common\Hollow Knight Silksong\BepInEx\plugins\flibber-FilteredLogs-1.0.0\FilteredLogs.dll')">
 	    <HintPath>H:\SteamLibrary\steamapps\common\Hollow Knight Silksong\BepInEx\plugins\flibber-FilteredLogs-1.0.0\FilteredLogs.dll</HintPath>
 	    <Private>False</Private>
-	</Reference>
-	<Reference Include="SSMP">
-	  <HintPath>$(SSMPDllPath)</HintPath>
 	</Reference>
   </ItemGroup>
 
