@@ -23,6 +23,8 @@ namespace SSMPEssentials.Client.Modules
 
         static readonly List<Request> requests = [];
 
+        internal static bool HasPending => requests.Any(r => !r.Responded);
+
         public static void AddRequest(IClientPlayer player)
         {
             // Remove any old requests from player
@@ -34,7 +36,7 @@ namespace SSMPEssentials.Client.Modules
 
             // Notify
             var requestStr = $"{Common.ColoredUsername(player)} has requested to teleport to you. " +
-                "Use /tpaccept or /tpdeny within 30 seconds to respond.";
+                $"Use /tpaccept (or press {Config.AcceptTeleportKey.ToString().Replace("Alpha", "")} / triple-tap D-pad Up) or /tpdeny within 30 seconds to respond.";
 
             Client.LocalChat(requestStr);
 

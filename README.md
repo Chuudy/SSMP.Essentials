@@ -20,7 +20,13 @@ The hold time can be changed with `Quick Teleport Hold Seconds` in the config (`
 If exactly one other player is connected, a teleport request is sent to them (same as `/tp`).
 Otherwise, the connected players are listed in chat.
 
-On a controller, hold View/Back (`JoystickButton6` on an Xbox pad) for the same time. This can be changed, or turned off with `None`, via `Quick Teleport (Controller)` in the config.
+On a controller, quickly tap **D-pad Down three times** instead.
+
+To accept an incoming teleport request without typing `/tpa`, press `7`, or quickly tap **D-pad Up three times**.
+D-pad taps only count during gameplay (not in menus), and D-pad Up does nothing if no request is pending.
+
+Config options (`Keybinds` section): `Quick Teleport`, `Quick Teleport Hold Seconds`, `Quick Teleport D-pad Triple Tap`,
+`Accept Teleport`, `Accept Teleport D-pad Triple Tap`, and `Triple Tap Window` (max seconds between taps, default `0.4`).
 
 
 ## Spectating/Freecam
